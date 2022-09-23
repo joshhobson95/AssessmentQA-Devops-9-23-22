@@ -8,13 +8,48 @@ app.use(express.json())
 
 
 
-var Rollbar = require('rollbar')
+var Rollbar = require("rollbar");
 var rollbar = new Rollbar({
-  accessToken: 'c5216fd9a22044c188dd1c53a371c190',
+  accessToken: '4a1d954f6c08401b83ee4a1d8005989a',
   captureUncaught: true,
-  captureUnhandledRejections: true,
-})
+  captureUnhandledRejections: true
+});
+
 rollbar.log('Hello world!')
+
+
+
+try {
+   makeRobotChoiceCard ();
+   } catch (error) {
+     rollbar.log('card created');
+     
+   };
+ 
+try {
+   drawFive ();
+   } catch (error) {
+     rollbar.log('draw button clicked');
+     
+   };
+try {
+   duel ();
+   } catch (error) {
+     rollbar.log('duel button clicked');
+     
+   };
+try {
+   chooseBot ();
+   } catch (error) {
+     rollbar.log('one bot chosen');
+     
+   };
+ 
+
+
+
+
+
 
 
 app.use('/', express.static(path.join(__dirname, 'public/index.html')))
